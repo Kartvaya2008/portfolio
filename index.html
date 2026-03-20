@@ -638,41 +638,8 @@ footer {
 .rd3 { transition-delay: 0.3s; } .rd4 { transition-delay: 0.4s; }
 
 /* ── MUSIC PLAYER ── */
-
-/* Nav music controls */
-.nav-music {
-  display: flex; align-items: center; gap: 14px;
-}
-.music-toggle {
-  display: flex; align-items: center; gap: 8px;
-  background: var(--gold-dim);
-  border: 1px solid var(--gold-border);
-  border-radius: 20px; padding: 7px 18px;
-  cursor: pointer;
-  font-family: var(--font-body); font-size: 10px;
-  letter-spacing: 2px; text-transform: uppercase;
-  color: var(--gold);
-  transition: background 0.3s, box-shadow 0.3s;
-}
-.music-toggle:hover { background: rgba(201,169,110,0.15); box-shadow: 0 0 16px rgba(201,169,110,0.2); }
-.music-toggle.on { background: rgba(201,169,110,0.18); box-shadow: 0 0 14px rgba(201,169,110,0.18); }
-.music-note-icon { font-size: 12px; }
-.nav-vol-wrap { display: flex; align-items: center; gap: 6px; }
-.nav-vol-icon { font-size: 11px; color: var(--muted2); }
-input[type="range"].gold-slider {
-  -webkit-appearance: none; appearance: none;
-  width: 68px; height: 2px;
-  background: linear-gradient(to right, var(--gold) 0%, var(--gold) var(--val, 20%), rgba(201,169,110,0.2) var(--val, 20%));
-  border-radius: 2px; outline: none; cursor: pointer;
-}
-input[type="range"].gold-slider::-webkit-slider-thumb {
-  -webkit-appearance: none; width: 10px; height: 10px;
-  border-radius: 50%; background: var(--gold-light);
-  box-shadow: 0 0 6px rgba(201,169,110,0.5);
-}
-
-/* Vinyl spin */
 @keyframes vinyl-spin { to { transform: rotate(360deg); } }
+
 .nav-vinyl {
   width: 34px; height: 34px; border-radius: 50%;
   background: conic-gradient(from 0deg, #181816, var(--gold), #181816, var(--gold-light), #181816);
@@ -688,7 +655,30 @@ input[type="range"].gold-slider::-webkit-slider-thumb {
   background: var(--bg2); border: 1px solid rgba(201,169,110,0.25);
 }
 
-/* ── NOW PLAYING BAR ── */
+.music-toggle {
+  display: flex; align-items: center; gap: 8px;
+  background: var(--gold-dim); border: 1px solid var(--gold-border);
+  border-radius: 20px; padding: 7px 18px; cursor: pointer;
+  font-family: var(--font-body); font-size: 10px;
+  letter-spacing: 2px; text-transform: uppercase; color: var(--gold);
+  transition: background 0.3s, box-shadow 0.3s;
+}
+.music-toggle:hover { background: rgba(201,169,110,0.15); box-shadow: 0 0 16px rgba(201,169,110,0.2); }
+.music-toggle.on { background: rgba(201,169,110,0.2); box-shadow: 0 0 14px rgba(201,169,110,0.2); }
+
+input[type="range"].gold-slider {
+  -webkit-appearance: none; appearance: none;
+  width: 68px; height: 2px;
+  background: linear-gradient(to right, var(--gold) 0%, var(--gold) var(--val,20%), rgba(201,169,110,0.2) var(--val,20%));
+  border-radius: 2px; outline: none; cursor: pointer;
+}
+input[type="range"].gold-slider::-webkit-slider-thumb {
+  -webkit-appearance: none; width: 10px; height: 10px;
+  border-radius: 50%; background: var(--gold-light);
+  box-shadow: 0 0 6px rgba(201,169,110,0.5);
+}
+
+/* Now Playing Bar */
 #now-playing {
   position: fixed; bottom: 0; left: 0; right: 0; z-index: 200;
   height: 72px;
@@ -698,12 +688,7 @@ input[type="range"].gold-slider::-webkit-slider-thumb {
   display: flex; align-items: center;
   padding: 0 40px; gap: 28px;
 }
-
-/* track info */
-.np-track {
-  display: flex; align-items: center; gap: 14px;
-  min-width: 260px;
-}
+.np-track { display: flex; align-items: center; gap: 14px; min-width: 260px; }
 .np-vinyl {
   width: 44px; height: 44px; border-radius: 50%; flex-shrink: 0;
   background: conic-gradient(from 0deg, #121210, var(--gold), #121210, var(--gold-light), #121210, var(--gold));
@@ -716,41 +701,22 @@ input[type="range"].gold-slider::-webkit-slider-thumb {
 .np-vinyl-hole { width: 14px; height: 14px; border-radius: 50%; background: var(--bg2); border: 1px solid rgba(201,169,110,0.3); }
 .np-name { font-family: var(--font-display); font-size: 15px; font-weight: 400; color: var(--white); }
 .np-sub { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted2); margin-top: 2px; }
-
-/* controls */
-.np-controls {
-  flex: 1; display: flex; flex-direction: column; align-items: center; gap: 5px;
-}
+.np-controls { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 5px; }
 .np-btns { display: flex; align-items: center; gap: 18px; }
-.np-btn {
-  background: none; border: none; color: var(--muted2); cursor: pointer;
-  font-size: 16px; padding: 4px; transition: color 0.2s;
-  line-height: 1;
-}
+.np-btn { background: none; border: none; color: var(--muted2); cursor: pointer; font-size: 16px; padding: 4px; transition: color 0.2s; line-height: 1; }
 .np-btn:hover { color: var(--gold-light); }
 .np-play-btn {
   width: 36px; height: 36px; border-radius: 50%;
-  border: 1px solid var(--gold);
-  background: transparent; cursor: pointer;
+  border: 1px solid var(--gold); background: transparent; cursor: pointer;
   display: flex; align-items: center; justify-content: center;
   font-size: 13px; color: var(--gold-light);
   box-shadow: 0 0 12px rgba(201,169,110,0.18);
   transition: background 0.3s, box-shadow 0.3s, transform 0.2s;
 }
-.np-play-btn:hover {
-  background: var(--gold); color: var(--bg2);
-  box-shadow: 0 0 22px rgba(201,169,110,0.35);
-  transform: scale(1.06);
-}
-.np-progress {
-  width: 100%; max-width: 480px;
-  display: flex; align-items: center; gap: 10px;
-}
+.np-play-btn:hover { background: var(--gold); color: var(--bg2); box-shadow: 0 0 22px rgba(201,169,110,0.35); transform: scale(1.06); }
+.np-progress { width: 100%; max-width: 480px; display: flex; align-items: center; gap: 10px; }
 .prog-time { font-family: var(--font-display); font-size: 11px; color: var(--muted2); min-width: 32px; font-style: italic; }
-.prog-bar {
-  flex: 1; height: 2px; background: rgba(201,169,110,0.15);
-  border-radius: 2px; position: relative; cursor: pointer;
-}
+.prog-bar { flex: 1; height: 2px; background: rgba(201,169,110,0.15); border-radius: 2px; cursor: pointer; }
 .prog-fill {
   height: 100%; border-radius: 2px; width: 0%;
   background: linear-gradient(to right, var(--gold), var(--gold-light));
@@ -759,27 +725,15 @@ input[type="range"].gold-slider::-webkit-slider-thumb {
 .prog-fill::after {
   content: ''; position: absolute; right: -5px; top: -4px;
   width: 10px; height: 10px; border-radius: 50%;
-  background: var(--gold-light);
-  box-shadow: 0 0 8px rgba(201,169,110,0.6);
+  background: var(--gold-light); box-shadow: 0 0 8px rgba(201,169,110,0.6);
 }
-
-/* right side — eq + volume */
-.np-right {
-  display: flex; align-items: center; gap: 20px; min-width: 180px; justify-content: flex-end;
-}
-.np-eq {
-  display: flex; align-items: flex-end; gap: 3px; height: 22px;
-}
-.np-eq-bar {
-  width: 3px; border-radius: 2px 2px 0 0;
-  background: linear-gradient(to top, var(--gold), var(--gold-light));
-  transition: height 0.15s ease;
-}
+.np-right { display: flex; align-items: center; gap: 20px; min-width: 180px; justify-content: flex-end; }
+.np-eq { display: flex; align-items: flex-end; gap: 3px; height: 22px; }
+.np-eq-bar { width: 3px; border-radius: 2px 2px 0 0; background: linear-gradient(to top, var(--gold), var(--gold-light)); transition: height 0.15s ease; }
 .np-eq.paused .np-eq-bar { height: 4px !important; transition: height 0.4s ease; }
 .np-vol-wrap { display: flex; align-items: center; gap: 7px; }
 .np-vol-icon { font-size: 12px; color: var(--muted2); }
 
-/* push main content up so bar doesn't overlap footer */
 body { padding-bottom: 72px; }
 
 /* ── RESPONSIVE ── */
@@ -815,7 +769,6 @@ body { padding-bottom: 72px; }
 <nav id="navbar">
   <div class="nav-brand">
     <div class="nav-vinyl" id="nav-vinyl"><div class="nav-vinyl-hole"></div></div>
-    <div class="nav-emblem" style="display:none">KR</div>
     <div class="nav-name">Portfolio</div>
   </div>
   <ul class="nav-links">
@@ -826,16 +779,14 @@ body { padding-bottom: 72px; }
     <li><a href="#experience">Experience</a></li>
   </ul>
   <div style="display:flex;align-items:center;gap:14px;">
-    <div class="nav-music">
-      <div class="nav-vol-wrap">
-        <span class="nav-vol-icon">♪</span>
-        <input type="range" class="gold-slider" id="vol-nav" min="0" max="100" value="20">
-      </div>
-      <button class="music-toggle" id="music-toggle">
-        <span class="music-note-icon">𝄞</span>
-        <span id="music-label">Music Off</span>
-      </button>
+    <div style="display:flex;align-items:center;gap:8px;">
+      <span style="font-size:11px;color:var(--muted2);">♪</span>
+      <input type="range" class="gold-slider" id="vol-nav" min="0" max="100" value="20">
     </div>
+    <button class="music-toggle" id="music-toggle">
+      <span>𝄞</span>
+      <span id="music-label">Music Off</span>
+    </button>
     <a href="#contact" class="nav-cta">Hire Me</a>
   </div>
 </nav>
@@ -1290,7 +1241,6 @@ body { padding-bottom: 72px; }
 
 <!-- ── NOW PLAYING BAR ── -->
 <div id="now-playing">
-  <!-- Track info -->
   <div class="np-track">
     <div class="np-vinyl" id="np-vinyl"><div class="np-vinyl-hole"></div></div>
     <div>
@@ -1298,31 +1248,27 @@ body { padding-bottom: 72px; }
       <div class="np-sub">Piano · Ambient · Background</div>
     </div>
   </div>
-
-  <!-- Controls + progress -->
   <div class="np-controls">
     <div class="np-btns">
-      <button class="np-btn" title="Previous">⏮</button>
-      <button class="np-play-btn" id="np-play-btn" onclick="toggleMusic()">▶</button>
-      <button class="np-btn" title="Next">⏭</button>
+      <button class="np-btn">⏮</button>
+      <button class="np-play-btn" id="np-play-btn">▶</button>
+      <button class="np-btn">⏭</button>
     </div>
     <div class="np-progress">
       <span class="prog-time" id="prog-cur">0:00</span>
-      <div class="prog-bar">
+      <div class="prog-bar" id="prog-bar">
         <div class="prog-fill" id="prog-fill"></div>
       </div>
       <span class="prog-time" id="prog-total">—:——</span>
     </div>
   </div>
-
-  <!-- EQ + volume -->
   <div class="np-right">
     <div class="np-eq paused" id="np-eq">
-      <div class="np-eq-bar" style="height:6px"></div>
-      <div class="np-eq-bar" style="height:6px"></div>
-      <div class="np-eq-bar" style="height:6px"></div>
-      <div class="np-eq-bar" style="height:6px"></div>
-      <div class="np-eq-bar" style="height:6px"></div>
+      <div class="np-eq-bar" style="height:4px"></div>
+      <div class="np-eq-bar" style="height:4px"></div>
+      <div class="np-eq-bar" style="height:4px"></div>
+      <div class="np-eq-bar" style="height:4px"></div>
+      <div class="np-eq-bar" style="height:4px"></div>
     </div>
     <div class="np-vol-wrap">
       <span class="np-vol-icon">♪</span>
@@ -1331,31 +1277,31 @@ body { padding-bottom: 72px; }
   </div>
 </div>
 
-<!-- Audio — royalty-free piano ambient. Replace src with your chosen MP3 URL -->
+<!-- Royalty-free piano ambient from Pixabay (no login needed) -->
 <audio id="bg-music" loop preload="none">
-  <source src="https://assets.mixkit.co/music/preview/mixkit-serene-view-443.mp3" type="audio/mpeg">
+  <source src="https://cdn.pixabay.com/download/audio/2022/01/18/audio_d0c6ff1bab.mp3" type="audio/mpeg">
 </audio>
 
 <script>
-  // ── NAV SCROLL ──
+  /* ── NAV SCROLL ── */
   const navbar = document.getElementById('navbar');
   window.addEventListener('scroll', () => {
     navbar.classList.toggle('scrolled', window.scrollY > 60);
   });
 
-  // ── TYPING ──
+  /* ── TYPING ── */
   const fullName = "Kartavya Raikwar";
-  const el = document.getElementById('typed-name');
-  let i = 0;
+  const typedEl = document.getElementById('typed-name');
+  let ti = 0;
   function type() {
-    if (i <= fullName.length) {
-      el.textContent = fullName.slice(0, i++);
-      setTimeout(type, i === 1 ? 800 : 75);
+    if (ti <= fullName.length) {
+      typedEl.textContent = fullName.slice(0, ti++);
+      setTimeout(type, ti === 1 ? 800 : 75);
     }
   }
   setTimeout(type, 700);
 
-  // ── REVEAL ──
+  /* ── REVEAL ── */
   const reveals = document.querySelectorAll('.reveal');
   const obs = new IntersectionObserver((entries) => {
     entries.forEach(e => {
@@ -1364,35 +1310,35 @@ body { padding-bottom: 72px; }
   }, { threshold: 0.08 });
   reveals.forEach(r => obs.observe(r));
 
-  // ── MUSIC PLAYER ──
-  const audio       = document.getElementById('bg-music');
-  const toggle      = document.getElementById('music-toggle');
-  const label       = document.getElementById('music-label');
-  const playBtn     = document.getElementById('np-play-btn');
-  const npVinyl     = document.getElementById('np-vinyl');
-  const navVinyl    = document.getElementById('nav-vinyl');
-  const npEq        = document.getElementById('np-eq');
-  const progFill    = document.getElementById('prog-fill');
-  const progCur     = document.getElementById('prog-cur');
-  const progTotal   = document.getElementById('prog-total');
-  const volNav      = document.getElementById('vol-nav');
-  const volNp       = document.getElementById('vol-np');
+  /* ── MUSIC PLAYER ── */
+  const audio      = document.getElementById('bg-music');
+  const toggle     = document.getElementById('music-toggle');
+  const label      = document.getElementById('music-label');
+  const playBtn    = document.getElementById('np-play-btn');
+  const npVinyl    = document.getElementById('np-vinyl');
+  const navVinyl   = document.getElementById('nav-vinyl');
+  const npEq       = document.getElementById('np-eq');
+  const progFill   = document.getElementById('prog-fill');
+  const progBar    = document.getElementById('prog-bar');
+  const progCur    = document.getElementById('prog-cur');
+  const progTotal  = document.getElementById('prog-total');
+  const volNav     = document.getElementById('vol-nav');
+  const volNp      = document.getElementById('vol-np');
   let playing = false;
 
-  audio.volume = 0.20;
-
+  /* set volume and sync both sliders */
   function setVol(v) {
     audio.volume = v / 100;
-    const pct = v + '%';
-    volNav.style.setProperty('--val', pct);
-    volNp.style.setProperty('--val', pct);
-    volNav.value = v;
-    volNp.value = v;
+    [volNav, volNp].forEach(s => {
+      s.value = v;
+      s.style.setProperty('--val', v + '%');
+    });
   }
   setVol(20);
   volNav.addEventListener('input', e => setVol(e.target.value));
   volNp.addEventListener('input',  e => setVol(e.target.value));
 
+  /* play / pause toggle */
   function toggleMusic() {
     if (playing) {
       audio.pause();
@@ -1404,7 +1350,7 @@ body { padding-bottom: 72px; }
       navVinyl.classList.remove('spinning');
       npEq.classList.add('paused');
     } else {
-      audio.play().catch(() => {});
+      audio.play().catch(err => console.warn('Autoplay blocked:', err));
       playing = true;
       label.textContent = 'Music On';
       toggle.classList.add('on');
@@ -1414,28 +1360,38 @@ body { padding-bottom: 72px; }
       npEq.classList.remove('paused');
     }
   }
-  toggle.addEventListener('click', toggleMusic);
 
-  // progress bar
+  toggle.addEventListener('click', toggleMusic);
+  playBtn.addEventListener('click', toggleMusic);
+
+  /* progress bar update */
   audio.addEventListener('timeupdate', () => {
     if (!audio.duration) return;
     const pct = (audio.currentTime / audio.duration) * 100;
     progFill.style.width = pct + '%';
-    progCur.textContent  = fmt(audio.currentTime);
+    progCur.textContent = fmt(audio.currentTime);
     progTotal.textContent = fmt(audio.duration);
   });
+
+  /* click on progress bar to seek */
+  progBar.addEventListener('click', e => {
+    if (!audio.duration) return;
+    const rect = progBar.getBoundingClientRect();
+    audio.currentTime = ((e.clientX - rect.left) / rect.width) * audio.duration;
+  });
+
   function fmt(s) {
     const m = Math.floor(s / 60);
     return m + ':' + String(Math.floor(s % 60)).padStart(2, '0');
   }
 
-  // animated eq bars while playing
+  /* animated EQ bars */
   const eqBars = npEq.querySelectorAll('.np-eq-bar');
   function animEq() {
     if (playing) {
-      eqBars.forEach(b => { b.style.height = (4 + Math.random() * 18) + 'px'; });
+      eqBars.forEach(b => { b.style.height = (3 + Math.random() * 17) + 'px'; });
     }
-    setTimeout(animEq, 120 + Math.random() * 130);
+    setTimeout(animEq, 100 + Math.random() * 150);
   }
   animEq();
 </script>
